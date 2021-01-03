@@ -3,7 +3,7 @@
  E ai Devs CDA, Tudo bom? 🖖
  SundayOpenSource ou SundayCommit, é um desafio que visa ajudá-lo a melhorar suas habilidades de codificação fazendo  projetos de qualquer escala para por no seu github utilizando qualquer tecnologia que desejar 
 
- <img src="https://github.com/MartinDala/SundayOpenSource/blob/main/logo.png"><br>
+ <img src="https://github.com/Community-Dev-Angola/SundayOpenSource/blob/main/logo.png"><br>
  ## Objetivo
 
 SundayOpenSource é um desafio  que visa melhorar minhas habilidades em qualquer tecnologias através da realização de projetos,
