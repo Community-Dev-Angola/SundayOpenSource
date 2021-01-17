@@ -13,6 +13,10 @@
 # ************** IMPORTS DO ALGORITMO *****************
 import os
 from random import randint
+import colorama
+
+# ************ INICIANDO A CLASSE QUE VAI COLORIR O TERMINAL ************
+colorama.init(autoreset=True)
 
 # ********************** VARIAVEIS GLOBAIS **************************
 peca = 'X'
@@ -24,9 +28,9 @@ quadro = [' '] * 9
 def mostrarQuadro(qd):
     print()
     print(f"{qd[0]}|{qd[1]}|{qd[2]}")
-    print('-+-+-')
+    print(f"-+-+-")
     print(f"{qd[3]}|{qd[4]}|{qd[5]}")
-    print('-+-+-')
+    print(f"-+-+-")
     print(f"{qd[6]}|{qd[7]}|{qd[8]}")
 
 
@@ -46,23 +50,23 @@ def vitoria():
 def dois_jogadores():
     global rodada, peca, quadro
     while True:
-        print(f'\n\nNivel: 2-Jogadores\nRodada: {rodada}')
+        print(f'\n\n{colorama.Back.WHITE}{colorama.Fore.BLACK}Nivel: 2-Jogadores\nRodada: {rodada}')
         mostrarQuadro(quadro)
 
-        jogada = int(input(f'\nSelecione aonde irá Jogar [{peca}]:\n[0-8]> '))
+        jogada = int(input(f'\n{colorama.Fore.LIGHTYELLOW_EX}Selecione aonde irá Jogar [{peca}]:\n[0-8]> '))
         try:
             if quadro[jogada] == ' ':
                 quadro[jogada] = peca
                 if peca == 'X':
                     if vitoria():
-                        print(f'\nFim do Jogo..\nVitória para Jogador [{peca}];')
+                        print(f'\n{colorama.Fore.GREEN}Fim do Jogo..\nVitória para Jogador [{peca}];')
                         mostrarQuadro(quadro)
                         os.system("pause")
                         break
                     peca = 'O'
                 elif peca == 'O':
                     if vitoria():
-                        print(f'\nFim do Jogo..\nVitória para Jogador [{peca}];')
+                        print(f'\n{colorama.Fore.GREEN}Fim do Jogo..\nVitória para Jogador [{peca}];')
                         mostrarQuadro(quadro)
                         os.system("pause")
                         break
@@ -71,16 +75,16 @@ def dois_jogadores():
                     peca = ' '
             else:
                 rodada -= 1
-                print(f'\nSelecione outra Posição de Jogo para [{peca}]!')
+                print(f'\n{colorama.Fore.RED}Selecione outra Posição de Jogo para [{peca}]!')
                 pass
         except IndexError:
-            print('\nPosição Inválida, Tente Novamente;')
+            print(f'\n{colorama.Back.RED}{colorama.Fore.LIGHTYELLOW_EX}Posição Inválida, Tente Novamente;')
             rodada -= 1
             pass
         rodada += 1
         if not vitoria():
             if ' ' not in quadro[:]:
-                print(f'\nFim do Jogo..\nEmpate;')
+                print(f'\n{colorama.Fore.LIGHTBLUE_EX}Fim do Jogo..\nEmpate;')
                 mostrarQuadro(quadro)
                 break
 
@@ -91,7 +95,7 @@ def jogada_pc(p):
     if quadro[pc] == ' ':
         quadro[pc] = p
         if vitoria():
-            print('Fim do jogo..\nComputador Ganhou!')
+            print(f'{colorama.Fore.GREEN}Fim do jogo..\nComputador Ganhou!')
             mostrarQuadro(quadro)
             os.system("pause")
     else:
@@ -99,15 +103,15 @@ def jogada_pc(p):
 
 
 def jogada_hm(p):
-    jogada_h = int(input('Selecione a sua posição de jogo: [0-8]\n> '))
+    jogada_h = int(input(f'{colorama.Fore.LIGHTYELLOW_EX}Selecione a sua posição de jogo: [0-8]\n> '))
     if quadro[jogada_h] == ' ':
         quadro[jogada_h] = p
         if vitoria():
-            print('Fim do jogo..\nVocê Ganhou!')
+            print(f'{colorama.Fore.GREEN}Fim do jogo..\nVocê Ganhou!')
             mostrarQuadro(quadro)
             os.system("pause")
     else:
-        print('Selecione outra posição de jogo;')
+        print(f'{colorama.Fore.RED}Selecione outra posição de jogo;')
         pass
 
 
@@ -117,7 +121,7 @@ def um_jogador():
         try:
             if ' ' in quadro[:]:
                 if peca == 'X':
-                    print(f'\n\nNível: 1-Jogador\nRodada: {rodada}')
+                    print(f'\n\n{colorama.Back.WHITE}{colorama.Fore.BLACK}Nível: 1-Jogador\nRodada: {rodada}')
                     mostrarQuadro(quadro)
                     jogada_hm(peca)
                     peca = 'O'
@@ -132,31 +136,32 @@ def um_jogador():
         rodada += 1
         if not vitoria():
             if ' ' not in quadro[:]:
-                print(f'\nFim do Jogo..\nEmpate;')
+                print(f'\n{colorama.Fore.LIGHTBLUE_EX}Fim do Jogo..\nEmpate;')
                 mostrarQuadro(quadro)
                 break
 
 
 # ******************************* DEFININDO O RUN E CORPO DO JOGO ***************************************
 if __name__ == '__main__':
-    print('\n\t\t\t\t\t*** TicTacToe-GC ***')
+    print(f'\n\t\t\t\t\t{colorama.Back.WHITE}{colorama.Fore.LIGHTCYAN_EX}*** TicTacToe-GC ***')
     while not vitoria():
         try:
-            print("\n************************************************************************")
-            jogo = input('\nSelecione o nível: (1)Jogador ou (2)Jogadores | Ou (s)air..\n> ')
+            print(f"\n{colorama.Fore.RED}************************************************************************")
+            jogo = input(f'\n{colorama.Fore.LIGHTYELLOW_EX}Selecione o nível: (1)Jogador ou (2)Jogadores | Ou (s)air..\n> ')
             if jogo == '1':
                 um_jogador()
             elif jogo == '2':
                 dois_jogadores()
             elif jogo == 's':
+                print(f"{colorama.Fore.RED}Terminando Jogo..")
                 exit()
             else:
-                print('\nDigite 1, 2..\nOu s para sair!')
+                print(f'\n{colorama.Fore.LIGHTRED_EX}Digite [1], [2] ou [s] para sair!')
                 pass
         except Exception as e:
-            print("Terminando Jogo..")
+            print(f"{colorama.Fore.RED}Terminando Jogo..")
             exit()
         if ' ' not in quadro[:]:
-            confirma = input("\nPressione (s) para sair...\n> ")
+            confirma = input(f"\n{colorama.Fore.LIGHTRED_EX}Pressione (s) para sair...\n> ")
             if confirma == 's':
                 exit()
