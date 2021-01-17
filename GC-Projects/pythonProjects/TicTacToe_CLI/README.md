@@ -7,5 +7,5 @@
 
 ## faça bom proveito
 
-Direitos Autorais: 2019-2021 [Nurul-GC](mailto:nuruldecarvalho@gmail.com) \
-Marca Registrada [ArtesGC](https://artesgc.home.blog)
+&copy; 2019-2021 [Nurul-GC](mailto:nuruldecarvalho@gmail.com) \
+&trade; [ArtesGC](https://artesgc.home.blog)
