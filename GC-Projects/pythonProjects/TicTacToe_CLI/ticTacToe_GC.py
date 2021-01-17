@@ -10,23 +10,27 @@
 #  Allah no Comando.                                                           *
 # ******************************************************************************
 
+# ************** IMPORTS DO ALGORITMO *****************
+import os
 from random import randint
 
+# ********************** VARIAVEIS GLOBAIS **************************
 peca = 'X'
 rodada = 0
-
 quadro = [' '] * 9
 
 
-def mostrarQuadro(quadro):
+# ******************** FUNCAO QUE ORGANIZA O QUADRO DO JOGO *************************
+def mostrarQuadro(qd):
     print()
-    print(f"{quadro[0]}|{quadro[1]}|{quadro[2]}")
+    print(f"{qd[0]}|{qd[1]}|{qd[2]}")
     print('-+-+-')
-    print(f"{quadro[3]}|{quadro[4]}|{quadro[5]}")
+    print(f"{qd[3]}|{qd[4]}|{qd[5]}")
     print('-+-+-')
-    print(f"{quadro[6]}|{quadro[7]}|{quadro[8]}")
+    print(f"{qd[6]}|{qd[7]}|{qd[8]}")
 
 
+# ************************** FUNCAO QUE VALIDA VITORIA **********************************
 def vitoria():
     return quadro[0] == quadro[1] and quadro[0] == quadro[2] and quadro[0] != ' ' or \
            quadro[3] == quadro[4] and quadro[3] == quadro[5] and quadro[3] != ' ' or \
@@ -38,6 +42,7 @@ def vitoria():
            quadro[2] == quadro[4] and quadro[2] == quadro[6] and quadro[2] != ' '
 
 
+# *************************** DEFININDO A FUNCAO PARA DOIS JOGADORES *********************************
 def dois_jogadores():
     global rodada, peca, quadro
     while True:
@@ -52,13 +57,15 @@ def dois_jogadores():
                     if vitoria():
                         print(f'\nFim do Jogo..\nVitória para Jogador [{peca}];')
                         mostrarQuadro(quadro)
-                        exit()
+                        os.system("pause")
+                        break
                     peca = 'O'
                 elif peca == 'O':
                     if vitoria():
                         print(f'\nFim do Jogo..\nVitória para Jogador [{peca}];')
                         mostrarQuadro(quadro)
-                        exit()
+                        os.system("pause")
+                        break
                     peca = 'X'
                 else:
                     peca = ' '
@@ -71,12 +78,14 @@ def dois_jogadores():
             rodada -= 1
             pass
         rodada += 1
-        if ' ' not in quadro[:]:
-            print(f'\nFim do Jogo..\nEmpate;')
-            mostrarQuadro(quadro)
-            exit()
+        if not vitoria():
+            if ' ' not in quadro[:]:
+                print(f'\nFim do Jogo..\nEmpate;')
+                mostrarQuadro(quadro)
+                break
 
 
+# *************************** DEFININDO IA DO JOGO ***********************************
 def jogada_pc(p):
     pc = randint(0, 8)
     if quadro[pc] == ' ':
@@ -84,7 +93,7 @@ def jogada_pc(p):
         if vitoria():
             print('Fim do jogo..\nComputador Ganhou!')
             mostrarQuadro(quadro)
-            exit()
+            os.system("pause")
     else:
         jogada_pc(p)
 
@@ -96,7 +105,7 @@ def jogada_hm(p):
         if vitoria():
             print('Fim do jogo..\nVocê Ganhou!')
             mostrarQuadro(quadro)
-            exit()
+            os.system("pause")
     else:
         print('Selecione outra posição de jogo;')
         pass
@@ -116,27 +125,38 @@ def um_jogador():
                     jogada_pc(peca)
                     peca = 'X'
             else:
-                print(f'\nFim do Jogo..\nEmpate;')
-                mostrarQuadro(quadro)
-                exit()
+                os.system("pause")
         except IndexError:
             rodada -= 1
             pass
         rodada += 1
+        if not vitoria():
+            if ' ' not in quadro[:]:
+                print(f'\nFim do Jogo..\nEmpate;')
+                mostrarQuadro(quadro)
+                break
 
 
+# ******************************* DEFININDO O RUN E CORPO DO JOGO ***************************************
 if __name__ == '__main__':
-    print('\n***TicTacToe-GC***')
-    while True:
+    print('\n\t\t\t\t\t*** TicTacToe-GC ***')
+    while not vitoria():
         try:
-            jogo = input('\nSelecione o nível: (1)Jogador ou (2)Jogadores\n> ')
+            print("\n************************************************************************")
+            jogo = input('\nSelecione o nível: (1)Jogador ou (2)Jogadores | Ou (s)air..\n> ')
             if jogo == '1':
                 um_jogador()
             elif jogo == '2':
                 dois_jogadores()
+            elif jogo == 's':
+                exit()
             else:
-                print('\nDigite 1 ou 2..')
+                print('\nDigite 1, 2..\nOu s para sair!')
                 pass
-        except KeyboardInterrupt:
+        except Exception as e:
             print("Terminando Jogo..")
             exit()
+        if ' ' not in quadro[:]:
+            confirma = input("\nPressione (s) para sair...\n> ")
+            if confirma == 's':
+                exit()
