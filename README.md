@@ -30,6 +30,7 @@ Então, o Obejctivo é de no meio da semana fazer o projecto, e no domingo antes
 | [Martin Dala](https://twitter.com/MartinDala2) | FullStack | CEO | 
 | [Lázaro Manuel](https://twitter.com/LzaroIncioManu2) | FullStack | CEO | 
 | [Juciano Silva](https://github.com/JucianoSilva153) | Programador Desktop e Mobile | Sim |
+| [Joa Roque](https://github.com/joaroque) | FullStack | Sim|
 
 #### Segue o  desafio
 [Twitter - SundayOpenSource](https://github.com/MartinDala/Startups-Awesome-Angola) 
