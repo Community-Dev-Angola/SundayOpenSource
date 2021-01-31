@@ -55,8 +55,8 @@ Empresa: ArtesGC Inc.''')
     
     def editar(self):
         try:
-            if os.path.exists('Contactos'):
-                contacto = askopenfilename(initialdir='Contactos')
+            if os.path.exists('GContactos'):
+                contacto = askopenfilename(initialdir='GContactos')
                 with open(contacto, 'r+') as f:
                     fc = f.read()
                 
@@ -68,7 +68,7 @@ Empresa: ArtesGC Inc.''')
                 lista = ScrolledText(self.janela_ed, font='Cambria 12', width=20, height=10, wrap=WORD)
                 lista.pack(expand=1, fill='both')
                 lista.insert(INSERT, fc)
-                ToolTip(lista, 'Certifique-se de manter o Cursor no início da Página\nSempre Antes de Guardar!')
+                ToolTip(lista, 'Certifique-se de manter o Cursor no início da Página\nSempre Antes de Guardar!', 5000)
                 
                 def guardar():
                     with open(contacto, 'w+') as c:
@@ -96,9 +96,9 @@ Empresa: ArtesGC Inc.''')
         if self.nome.get() == '' and self.numero.get() == '':
             showwarning('Aviso!', 'Contacto Não Guardado\n- Nome e Número Não Preenchidos..')
         else:
-            if not path.exists('Contactos'):
-                makedirs('Contactos')
-            with open(f"Contactos/{self.nome.get()}.GContact", 'w+') as file:
+            if not path.exists('GContactos'):
+                makedirs('GContactos')
+            with open(f"GContactos/{self.nome.get()}.gcontact", 'w+') as file:
                 if self.morada1.get() == '' and self.morada2.get() == '' and self.email.get() == '':
                     file.write(f'''Nome: {self.nome.get()}
 Numero: {self.numero.get()}''')
@@ -112,8 +112,8 @@ Email: {self.email.get()}''')
     
     def mostrar(self):
         try:
-            if os.path.exists('Contactos'):
-                contacto = askopenfilename(initialdir='Contactos')
+            if os.path.exists('GContactos'):
+                contacto = askopenfilename(initialdir='GContactos')
                 with open(contacto, 'r+') as f:
                     fc = f.readlines()
                 
