@@ -15,17 +15,9 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 from tkinter.scrolledlist import ScrolledList
 from tkinter.scrolledtext import ScrolledText
-import platform
 
 
 class L4T8:
-    """
-Type: Python
-Nome: Lista Telefónica
-Modified: 29/03/2020 05:18am
-Created: 21/03/2020 06:59pm
-versão: 0.1-032020 * 0.2-032020 * 0.3-042020
-designer e programador: https://@nurulgc.home.blog - Nurul GC"""
     
     def __init__(self):
         self.gc = Tk()
