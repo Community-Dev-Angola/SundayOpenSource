@@ -21,7 +21,7 @@ class C8GC:
         self.gc = Tk()
         self.gc.title('GCalculadora')
         self.gc.resizable(0, 0)
-        # descomente a proxima linha se for urodar o script num Windows
+        # descomente a proxima linha se for rodar o script num Windows
         # self.gc.iconbitmap('', 'img/artesgc.ico')
 
         self.valor1 = DoubleVar(self.gc)
