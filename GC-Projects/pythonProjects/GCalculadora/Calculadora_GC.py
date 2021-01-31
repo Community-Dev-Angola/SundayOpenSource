@@ -16,17 +16,10 @@ from tkinter.ttk import Notebook, Progressbar
 
 
 class C8GC:
-    """
-Nome: GCalculadora GC
-Projectado por: https://@nurulgc.home.blog - Nurul GC
-inicio do projecto - 11:00h 20-03-2020
-edição - 04:37h 04-04-2020
-versão: 0.1-032020 - 0.2-042020 - 0.3-052020
-"""
 
     def __init__(self):
         self.gc = Tk()
-        self.gc.title('GCalculadora GC')
+        self.gc.title('GCalculadora')
         self.gc.resizable(0, 0)
         # descomente a proxima linha se for urodar o script num Windows
         # self.gc.iconbitmap('', 'img/artesgc.ico')
@@ -95,10 +88,10 @@ versão: 0.1-032020 - 0.2-042020 - 0.3-052020
     #
     @staticmethod
     def hello():
-        showinfo('Sobre', '''Nome: GCalculadora GC
-Versão: 0.4-052020
+        showinfo('Sobre', '''Nome: GCalculadora
+Versão: 0.5-012021
 Designer e Programador: Nurul GC
-Empresa: ArtesGC, Inc. - https://nurulgc.home.blog''')
+Empresa: ArtesGC Inc.''')
 
     def instr(self):
         adicao = '<v1+v2> - Adição, retorna o resultado da operação (n1 + n2)'
